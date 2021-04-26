@@ -1,11 +1,11 @@
 import './App.css';
+import Topbar from './components/Topbar';
 
 function App() {
   return (
     <div className='App'>
-      <header className='App-header'>
-        <p>Welcome to BeeBook</p>
-      </header>
+      <Topbar />
+      <div>Welcome to BeeBook</div>
     </div>
   );
 }

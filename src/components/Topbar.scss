@@ -1,0 +1,20 @@
+$topbar-bg-color: rgb(255, 237, 225);
+$topbar-text-color: rgb(0, 0, 0);
+
+.topbar {
+  display: flex;
+  align-items: center;
+  background-color: $topbar-bg-color;
+  height: 100px;
+
+  .logo {
+    margin-left: 10px;
+    width: 70px;
+    pointer-events: none;
+  }
+
+  .title {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 40px;
+  }
+}
