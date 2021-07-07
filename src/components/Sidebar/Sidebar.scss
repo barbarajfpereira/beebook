@@ -1,0 +1,40 @@
+$bg-primary-color: rgba(255, 237, 225, 0.7);
+$bg-secondary-color: rgb(255, 224, 203);
+$text-color: rgb(95, 95, 95);
+$text-color-hover: rgb(0, 0, 0);
+
+.sidebar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  border-right: 2px solid rgb(194, 194, 194); //variables
+  padding-left: 0;
+  margin-top: 0;
+
+    li {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      list-style: none;
+      cursor: pointer;
+
+      background-color: $bg-primary-color;
+
+      color: $text-color;
+      font-weight: bold;
+      text-transform: uppercase;
+
+      &.active {
+        background-color: darken($bg-primary-color, 50%);
+      }
+
+      &:hover {
+        background-color: $bg-secondary-color;
+
+        color: $text-color-hover
+      }
+    }
+}
