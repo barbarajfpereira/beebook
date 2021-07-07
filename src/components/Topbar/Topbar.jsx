@@ -1,5 +1,5 @@
 import './Topbar.scss';
-import logo from '../assets/topbar-logo.png';
+import logo from '../../assets/topbar-logo.png';
 
 const Topbar = () => {
   return (
