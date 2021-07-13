@@ -1,20 +1,18 @@
-@import "../../variables";
-
+@import '../../variables';
 
 .topbar {
   display: flex;
   align-items: center;
-  background-color: $bg-color;
-  border-bottom: 2px solid rgb(194, 194, 194); //variables
+  background-color: $bg-primary-color;
+  border-bottom: 2px solid $border-color;
 
   .logo {
     margin-left: 10px;
-    width: 70px;
-    pointer-events: none;
+    width: $logo-width;
   }
 
   .title {
-    font-family: 'Gochi Hand', cursive;//variables
-    font-size: 40px;//variables
+    font-family: $font-title;
+    font-size: $font-large;
   }
 }
