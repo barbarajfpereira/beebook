@@ -2,18 +2,19 @@
 
 .sidebar {
   height: 100%;
+  min-width: 100px;
   display: flex;
   flex-direction: column;
 
-  border-right: 2px solid $border-color;
-  padding-left: 0;
   margin-top: 0;
+  padding-left: 0;
+  border-right: 2px solid $border-color;
 
   li {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1;
 
     list-style: none;
     cursor: pointer;
@@ -24,13 +25,19 @@
     font-weight: bold;
     text-transform: uppercase;
 
-    &.active {
-      background-color: $bg-secondary-color;
-    }
-
+    &.active,
     &:hover {
       background-color: lighten($bg-secondary-color, 5%);
-      color: darken($text-dark, 30%);
     }
+  }
+}
+
+@media (max-width: 400px) {
+  .sidebar {
+    height: 200px;
+    margin-bottom: 0;
+
+    border-right: none;
+    border-bottom: 2px solid $border-color;
   }
 }

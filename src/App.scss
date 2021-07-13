@@ -1,11 +1,17 @@
 .app {
-  width: 100vw;
+  min-width: 200px;
   height: 100vh;
-  display: grid;
-  grid-template-rows: 10% auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.main-page {
-  display: grid;
-  grid-template-columns: 20% auto;
+.main-section {
+  display: flex;
+  height: 100%;
+}
+
+@media (max-width: 400px) {
+  .main-section {
+    flex-direction: column;
+  }
 }
