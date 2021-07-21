@@ -1,20 +1,17 @@
 import './Sidebar.scss';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const tabs = ['posts', 'gallery', 'todos'];
 
 const Sidebar = () => {
-  const [activeTab, setActiveTab] = useState('');
+  const location = useLocation();
+  const { pathname } = location;
+  const splitLocation = pathname.split('/');
 
   return (
     <ul className='sidebar'>
       {tabs.map((tab) => (
-        <li
-          onClick={() => setActiveTab(tab)}
-          className={activeTab === tab ? 'active' : ''}
-        >
-          {activeTab === tab ? '>' : ''}
+        <li className={splitLocation[1] === `${tab}` ? 'active' : ''}>
           <Link to={`/${tab}`}>{tab}</Link>
         </li>
       ))}

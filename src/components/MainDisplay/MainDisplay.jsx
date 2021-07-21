@@ -1,7 +1,5 @@
 import './MainDisplay.scss';
-import { Route, Switch } from 'react-router-dom';
-
-const tabs = ['posts', 'gallery', 'todos'];
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 const MainDisplay = () => {
   return (
@@ -10,13 +8,14 @@ const MainDisplay = () => {
         <Route exact path='/'>
           <div className='welcome-message animation'>Welcome to BeeBook</div>
         </Route>
-        {tabs.map((tab, i) => (
-          <Route key={i} path={`/${tab}`}>
-            {tab}
-            {/* inserir aqui componente react */}
-          </Route>
-        ))}
-        ;
+
+        <Route path='/posts'>
+          posts
+          {/* inserir aqui componente react */}
+        </Route>
+        <Route path='/gallery'>gallery</Route>
+        <Route path='/todos'>todos</Route>
+        <Route render={() => <Redirect to='/' />} />
       </Switch>
     </div>
   );

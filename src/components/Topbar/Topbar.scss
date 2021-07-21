@@ -11,8 +11,13 @@
     width: $logo-width;
   }
 
-  .title {
+  .name {
     font-family: $font-family;
     font-size: $font-large;
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
   }
 }
