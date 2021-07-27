@@ -1,21 +1,20 @@
 @import '../../variables';
 
 .main-display {
-  display: flex;
-  flex-direction: column;
   flex: 1;
-  align-items: center;
-  justify-content: center;
+  overflow-y: auto;
 
-  min-height: 200px;
-  text-transform: uppercase;
+  .home {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  .welcome-message {
-    text-align: center;
-    font-family: $font-family;
-
-    font-size: $font-small;
-    animation: animation 2s linear infinite alternate;
+    .welcome-message {
+      font-family: $font-family;
+      font-size: $font-small;
+      animation: animation 2s linear infinite alternate;
+    }
   }
 }
 

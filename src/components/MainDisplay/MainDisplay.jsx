@@ -6,13 +6,14 @@ const MainDisplay = () => {
     <div className='main-display'>
       <Switch>
         <Route exact path='/'>
-          <div className='welcome-message animation'>Welcome to BeeBook</div>
+          <div className='home'>
+            <span className='welcome-message animation'>
+              Welcome to BeeBook
+            </span>
+          </div>
         </Route>
 
-        <Route path='/posts'>
-          posts
-          {/* inserir aqui componente react */}
-        </Route>
+        <Route path='/posts'>posts</Route>
         <Route path='/gallery'>gallery</Route>
         <Route path='/todos'>todos</Route>
         <Route render={() => <Redirect to='/' />} />
