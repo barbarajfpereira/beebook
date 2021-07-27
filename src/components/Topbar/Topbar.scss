@@ -1,10 +1,18 @@
 @import '../../variables';
 
+$logo-width: 70px;
+
 .topbar {
   display: flex;
-  align-items: center;
   background-color: $bg-primary-color;
   border-bottom: 2px solid $border-color;
+
+  a {
+    display: flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+  }
 
   .logo {
     margin-left: 10px;
@@ -14,10 +22,5 @@
   .name {
     font-family: $font-family;
     font-size: $font-large;
-
-    a {
-      color: black;
-      text-decoration: none;
-    }
   }
 }
