@@ -13,7 +13,11 @@ const Posts = () => {
   }, []);
 
   if (posts.length === 0) {
-    return <div>NO POSTS</div>;
+    return (
+      <div className='container-loader'>
+        <div className='loader'></div>
+      </div>
+    );
   }
 
   return (
