@@ -22,9 +22,9 @@ const Posts = () => {
 
   return (
     <div>
-      {posts.map(({ id, title, body }) => (
-        <div>
-          <h3 className='title'>{`${id} - ${title}`}</h3>
+      {posts.map(({ userId, title, body }) => (
+        <div className='container-post'>
+          <div className='title'>{`User ${userId}: ${title}`}</div>
           <div className='body'>{body}</div>
         </div>
       ))}

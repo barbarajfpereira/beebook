@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .container-loader {
   display: flex;
   justify-content: center;
@@ -21,4 +23,27 @@
       transform: rotate(360deg);
     }
   }
+}
+
+.container-post {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 10px;
+
+  background-color: lighten($bg-accent-color, 10%);
+  border: 1px solid $border-color;
+  overflow-y: auto;
+}
+
+.title {
+  flex: 1;
+  font-size: $font-large;
+  text-transform: capitalize;
+}
+
+.body {
+  flex: 1;
+  color: $text-dark;
+  font-size: $font-medium;
 }
