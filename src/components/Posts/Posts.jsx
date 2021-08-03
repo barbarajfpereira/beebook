@@ -1,35 +1,76 @@
 import { useEffect } from 'react';
 import './Posts.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPosts } from '../../state/postsSlice';
+import { setPosts, setLoading, setError } from '../../state/postsSlice';
+import { useHistory } from 'react-router-dom';
 
 const Posts = () => {
-  const posts = useSelector((state) => state.posts);
+  let history = useHistory();
+
+  const posts = useSelector((state) => state.posts.value);
+  const loading = useSelector((state) => state.posts.loading);
+  const error = useSelector((state) => state.posts.error);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (posts.length === 0) {
+      dispatch(setLoading(true));
+
       fetch('https://jsonplaceholder.typicode.com/posts')
-        .then((response) => response.json())
+        .then((response) => {
+          if (!response.ok) {
+            throw Error();
+          }
+          return response.json();
+        })
         .then((posts) => {
           dispatch(setPosts(posts));
+        })
+        .catch((error) => {
+          dispatch(setError(true));
+        })
+        .finally(() => {
+          dispatch(setLoading(false));
         });
     }
+
+    return () => {
+      if (error) {
+        dispatch(setError(false));
+      }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (posts.length === 0) {
+  if (loading) {
     return (
-      <div className='container-loader'>
+      <div className='posts-loading'>
         <div className='loader'></div>
       </div>
     );
   }
 
+  if (error) {
+    return (
+      <div className='posts-error'>
+        Oops. Something went wrong.
+        <button
+          className='redirect'
+          onClick={() => {
+            history.push('/');
+          }}
+        >
+          Home
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <div>
+    <div className='posts'>
       {posts.map(({ userId, title, body }, index) => (
-        <div key={index} className='container-post'>
+        <div key={index} className='post'>
           <div className='title'>{`User ${userId}: ${title}`}</div>
           <div className='body'>{body}</div>
         </div>

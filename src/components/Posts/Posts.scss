@@ -1,6 +1,7 @@
 @import '../../variables';
 
-.container-loader {
+.posts-loading,
+.posts-error {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,26 +25,36 @@
     }
   }
 }
-
-.container-post {
-  display: flex;
+.posts-error {
   flex-direction: column;
-  margin: 20px;
-  padding: 10px;
 
-  background-color: lighten($bg-accent-color, 10%);
-  border: 1px solid $border-color;
-  overflow-y: auto;
+  .redirect {
+    cursor: pointer;
+    margin-top: 20px;
+  }
 }
 
-.title {
-  flex: 1;
-  font-size: $font-large;
-  text-transform: capitalize;
-}
+.posts {
+  .post {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 10px;
 
-.body {
-  flex: 1;
-  color: $text-dark;
-  font-size: $font-medium;
+    background-color: lighten($bg-accent-color, 10%);
+    border: 1px solid $border-color;
+    overflow-y: auto;
+
+    .title {
+      flex: 1;
+      font-size: $font-large;
+      text-transform: capitalize;
+    }
+
+    .body {
+      flex: 1;
+      color: $text-dark;
+      font-size: $font-medium;
+    }
+  }
 }
