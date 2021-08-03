@@ -1,15 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import './Posts.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { setPosts } from '../../state/postsSlice';
 
 const Posts = () => {
-  const [posts, setPosts] = useState([]);
+  const posts = useSelector((state) => state.posts);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then((response) => response.json())
-      .then((posts) => {
-        setPosts(posts);
-      });
+    if (posts.length === 0) {
+      fetch('https://jsonplaceholder.typicode.com/posts')
+        .then((response) => response.json())
+        .then((posts) => {
+          dispatch(setPosts(posts));
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (posts.length === 0) {
@@ -22,8 +28,8 @@ const Posts = () => {
 
   return (
     <div>
-      {posts.map(({ userId, title, body }) => (
-        <div className='container-post'>
+      {posts.map(({ userId, title, body }, index) => (
+        <div key={index} className='container-post'>
           <div className='title'>{`User ${userId}: ${title}`}</div>
           <div className='body'>{body}</div>
         </div>

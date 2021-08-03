@@ -11,7 +11,7 @@ const Sidebar = () => {
   return (
     <ul className='sidebar'>
       {tabs.map((tab) => (
-        <li className={splitLocation[1] === `${tab}` ? 'active' : ''}>
+        <li key={tab} className={splitLocation[1] === `${tab}` ? 'active' : ''}>
           <Link to={`/${tab}`}>{tab}</Link>
         </li>
       ))}
