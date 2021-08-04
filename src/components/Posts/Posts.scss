@@ -1,5 +1,7 @@
 @import '../../variables';
 
+$avatar-width: 50px;
+
 .posts-loading,
 .posts-error {
   display: flex;
@@ -41,9 +43,14 @@
     margin: 20px;
     padding: 10px;
 
-    background-color: lighten($bg-accent-color, 10%);
+    background-color: lighten($bg-accent-color, 15%);
     border: 1px solid $border-color;
     overflow-y: auto;
+
+    .user-avatar {
+      width: $avatar-width;
+      margin-bottom: 8px;
+    }
 
     .title {
       flex: 1;
