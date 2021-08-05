@@ -1,7 +1,5 @@
 @import '../../variables';
 
-$avatar-width: 50px;
-
 .posts-loading,
 .posts-error {
   display: flex;
@@ -33,46 +31,5 @@ $avatar-width: 50px;
   .redirect {
     cursor: pointer;
     margin-top: 20px;
-  }
-}
-
-.posts {
-  .post {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-    padding: 10px;
-
-    background-color: lighten($bg-accent-color, 15%);
-    border: 1px solid $border-color;
-    overflow-y: auto;
-
-    .user-avatar {
-      width: $avatar-width;
-      margin-bottom: 8px;
-    }
-
-    .title {
-      flex: 1;
-      font-size: $font-large;
-      text-transform: capitalize;
-    }
-
-    .body {
-      flex: 1;
-      color: $text-dark;
-      font-size: $font-medium;
-    }
-
-    .refresh {
-      margin-left: auto;
-      margin-top: 10px;
-      padding: 10px 16px;
-      border-radius: 3px;
-      background-color: darken($bg-primary-color, 20%);
-      color: white;
-      outline: none;
-      cursor: pointer;
-    }
   }
 }

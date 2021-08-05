@@ -11,6 +11,19 @@ const postsSlice = createSlice({
     setPosts: (state, action) => {
       state.value = action.payload;
     },
+    updatePosts: (state, action) => {
+      const updatedPosts = action.payload.map((post) => ({
+        ...post,
+        title: `(${new Date().getSeconds()}) UPDATED: ${post.title}`,
+      }));
+
+      const nonUpdatedPosts = state.value.filter(
+        (post) => post.userId !== updatedPosts[0].userId
+      );
+
+      state.value = [...nonUpdatedPosts, ...updatedPosts];
+    },
+
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
@@ -20,6 +33,7 @@ const postsSlice = createSlice({
   },
 });
 
-export const { setPosts, setLoading, setError } = postsSlice.actions;
+export const { setPosts, updatePosts, setLoading, setError } =
+  postsSlice.actions;
 
 export default postsSlice.reducer;
