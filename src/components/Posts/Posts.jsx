@@ -47,10 +47,10 @@ const Posts = () => {
           }
           return response.json();
         })
-        .then((posts) => {
-          dispatch(setPosts(posts));
+        .then((newPosts) => {
+          dispatch(setPosts(newPosts));
         })
-        .catch((error) => {
+        .catch(() => {
           dispatch(setError(true));
         })
         .finally(() => {
@@ -65,6 +65,14 @@ const Posts = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleRefreshClick = (userId) => {
+    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
+      .then((response) => response.json())
+      .then((newPosts) => {
+        dispatch(setPosts(newPosts));
+      });
+  };
 
   if (loading) {
     return (
@@ -90,17 +98,48 @@ const Posts = () => {
     );
   }
 
+  if (posts.length === 0) {
+    return null;
+  }
+
+  let postsByUser = [];
+
+  posts.forEach((post) => {
+    const matchingIndex = postsByUser.findIndex(
+      (userPosts) => userPosts[0].userId === post.userId
+    );
+
+    if (matchingIndex !== -1) {
+      postsByUser[matchingIndex].push(post);
+    } else {
+      postsByUser.push([post]);
+    }
+  });
+
   return (
     <div className='posts'>
-      {posts.map(({ userId, title, body }, index) => (
-        <div key={index} className='post'>
-          <img
-            src={avatars[userId]}
-            className='user-avatar'
-            alt='user avatar'
-          />
-          <div className='title'>{title}</div>
-          <div className='body'>{body}</div>
+      {postsByUser.map((userPosts) => (
+        <div style={{ background: 'red', padding: '20px', margin: '20px' }}>
+          {userPosts.map(({ userId, title, body }, index) => (
+            <div key={index} className='post'>
+              <img
+                src={avatars[userId]}
+                className='user-avatar'
+                alt='user avatar'
+              />
+
+              <div className='title'>{title}</div>
+
+              <div className='body'>{body}</div>
+
+              <button
+                className='refresh'
+                onClick={() => handleRefreshClick(userId)}
+              >
+                Refresh
+              </button>
+            </div>
+          ))}
         </div>
       ))}
     </div>
