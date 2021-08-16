@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 const Topbar = () => {
   return (
     <div className='topbar'>
-      <img src={logo} className='logo' alt='logo' />
-      <span className='name'>
-        <Link to='/'>BOOK</Link>
-      </span>
+      <Link to='/'>
+        <img src={logo} className='logo' alt='logo' />
+        <span className='name'>BOOK</span>
+      </Link>
     </div>
   );
 };

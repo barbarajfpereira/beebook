@@ -1,17 +1,21 @@
 import './MainDisplay.scss';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import Posts from '../Posts/Posts';
 
 const MainDisplay = () => {
   return (
     <div className='main-display'>
       <Switch>
         <Route exact path='/'>
-          <div className='welcome-message animation'>Welcome to BeeBook</div>
+          <div className='home'>
+            <span className='welcome-message animation'>
+              Welcome to BeeBook
+            </span>
+          </div>
         </Route>
 
         <Route path='/posts'>
-          posts
-          {/* inserir aqui componente react */}
+          <Posts />
         </Route>
         <Route path='/gallery'>gallery</Route>
         <Route path='/todos'>todos</Route>
