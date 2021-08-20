@@ -32,7 +32,7 @@ const PostGroup = ({ postGroup }) => {
   const dispatch = useDispatch();
 
   const handleRefreshClick = (userId) => {
-    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
+    fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
       .then((response) => response.json())
       .then((newPosts) => {
         dispatch(updatePosts(newPosts));
@@ -45,8 +45,8 @@ const PostGroup = ({ postGroup }) => {
     <div className='post-group'>
       <img src={avatars[userId]} className='user-avatar' alt='user avatar' />
 
-      {postGroup.map((post) => (
-        <Post post={post} />
+      {postGroup.map((post, index) => (
+        <Post key={index} post={post} />
       ))}
 
       <button className='refresh' onClick={() => handleRefreshClick(userId)}>

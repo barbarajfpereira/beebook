@@ -48,7 +48,7 @@ const Posts = () => {
   if (loading) {
     return (
       <div className='posts-loading'>
-        <div className='loader'></div>
+        <div className='loader' />
       </div>
     );
   }
@@ -91,8 +91,8 @@ const Posts = () => {
 
   return (
     <div className='posts'>
-      {sortedPostGroups.map((postGroup) => (
-        <PostGroup postGroup={postGroup} />
+      {sortedPostGroups.map((postGroup, index) => (
+        <PostGroup key={index} postGroup={postGroup} />
       ))}
     </div>
   );
