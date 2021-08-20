@@ -1,6 +1,7 @@
 import './MainDisplay.scss';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import Posts from '../Posts/Posts';
+import Photos from '../Photos/Photos';
 
 const MainDisplay = () => {
   return (
@@ -17,7 +18,9 @@ const MainDisplay = () => {
         <Route path='/posts'>
           <Posts />
         </Route>
-        <Route path='/gallery'>gallery</Route>
+        <Route path='/gallery'>
+          <Photos />
+        </Route>
         <Route path='/todos'>todos</Route>
         <Route render={() => <Redirect to='/' />} />
       </Switch>
