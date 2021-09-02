@@ -21,7 +21,7 @@ const MainDisplay = () => {
         <Route path='/gallery'>
           <Photos />
         </Route>
-        <Route path='/todos'>todos</Route>
+        <Route path='/todos'>TODOS</Route>
         <Route render={() => <Redirect to='/' />} />
       </Switch>
     </div>
