@@ -46,7 +46,7 @@ const PhotoGroup = ({ photoGroup }) => {
       <img src={avatars[userId]} className='user-avatar' alt='user avatar' />
 
       <div className='photos'>
-        {/* slice aplicado nas primeiras 10 posicoes do array de photoGroup, para mostrar apenas 10 fotos */}
+        {/* show first 10 photos */}
         {photoGroup.slice(0, 10).map((photo, index) => (
           <Photo key={index} photo={photo} />
         ))}

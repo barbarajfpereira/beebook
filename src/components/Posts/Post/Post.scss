@@ -11,13 +11,12 @@
 
   .title {
     flex: 1;
-    font-size: $font-large;
+    font-size: $font-medium;
     text-transform: capitalize;
   }
 
   .body {
     flex: 1;
     color: $text-dark;
-    font-size: $font-medium;
   }
 }

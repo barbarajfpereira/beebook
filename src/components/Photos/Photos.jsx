@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { useEffect } from 'react';
 
-// criar dicionario
+// create a dicionary
 // const albums = {
 //   albumId: userId,
 // };
@@ -22,8 +22,9 @@ const Photos = () => {
     if (photos.length === 0) {
       dispatch(setLoading(true));
 
-      // fazer chamada a albums
+      // create an albums call
       // fetch('https://jsonplaceholder.typicode.com/albums')
+
       fetch('https://jsonplaceholder.typicode.com/photos')
         .then((response) => {
           if (!response.ok) {
@@ -42,7 +43,7 @@ const Photos = () => {
         });
     }
 
-    // callback que corre on unmount
+    // callback on unmount
     return () => {
       if (error) {
         dispatch(setError(false));
@@ -83,7 +84,8 @@ const Photos = () => {
 
   photos.forEach((photo) => {
     const matchingIndex = photoGroups.findIndex(
-      // transformar albumId no userId do dicionario (com a api dos albums)
+      // from albumId to albums' userId to associate photo with user
+
       (photoGroup) => photoGroup[0].albumId === photo.albumId
     );
 
@@ -100,7 +102,7 @@ const Photos = () => {
 
   return (
     <div className='photos'>
-      {/* slice aplicado nas primeiras 10 posicoes do array de sortedPhotoGroups, para mostrar apenas 10 photoGroup */}
+      {/* show first 10 photoGroup */}
       {sortedPhotoGroups.slice(0, 10).map((photoGroup, index) => (
         <PhotoGroup key={index} photoGroup={photoGroup} />
       ))}
