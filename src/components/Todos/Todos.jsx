@@ -1,36 +1,39 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import TodoGroup from './TodoGroup';
 
 const Todos = () => {
-  const [value, setValue] = useState('');
   const [todos, setTodos] = useState([]);
 
-  const handleAdd = () => {
-    if (!value) {
-      return null;
-    }
-    setTodos([...todos, value]);
-    setValue('');
-  };
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then((response) => response.json())
+      .then((todos) => setTodos(todos));
+  }, []);
 
+  if (todos.length === 0) {
+    return null;
+  }
+
+  let todoGroups = [];
+
+  todos.forEach((todo) => {
+    const matchingIndex = todoGroups.findIndex(
+      (todoGroup) => todoGroup[0].userId === todo.userId
+    );
+
+    if (matchingIndex !== -1) {
+      todoGroups[matchingIndex].push(todo);
+    } else {
+      todoGroups.push([todo]);
+    }
+  });
+
+  const sortedTodoGroups = todoGroups.sort((a, b) => a[0].userId - b[0].userId);
   return (
     <div>
-      <div>
-        <input
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              handleAdd();
-            }
-          }}
-        />
-        <button onClick={handleAdd}>Add</button>
-      </div>
-      <div>
-        {todos.map((todo) => (
-          <li>{todo}</li>
-        ))}
-      </div>
+      {sortedTodoGroups.map((todoGroup, index) => (
+        <TodoGroup key={index} todoGroup={todoGroup} />
+      ))}
     </div>
   );
 };
