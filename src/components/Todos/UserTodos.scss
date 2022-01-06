@@ -1,0 +1,34 @@
+.todos-user {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  .todos-user__avatar {
+    width: 70px;
+    margin-bottom: 6px;
+  }
+
+  .todos-user__list {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    list-style: none;
+    line-height: 2rem;
+    background-color: antiquewhite;
+  }
+
+  .todos-user__clear {
+    margin-left: auto;
+    margin-top: 10px;
+    padding: 10px 16px;
+    background-color: darken(#efe1ce, 20%);
+    color: white;
+    font-size: 16px;
+    border-radius: 3px;
+    outline: none;
+
+    &:hover {
+      background-color: darken(#efe1ce, 30%);
+    }
+  }
+}
