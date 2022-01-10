@@ -15,6 +15,11 @@
     list-style: none;
     line-height: 2rem;
     background-color: antiquewhite;
+    cursor: pointer;
+
+    .todos-user__list--strike {
+      text-decoration: line-through;
+    }
   }
 
   .todos-user__clear {

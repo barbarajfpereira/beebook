@@ -26,27 +26,43 @@ const avatars = {
   10: user10,
 };
 
-const UserTodos = ({ todos }) => {
+const UserTodos = ({ todos, onAdd, onClear, onCompleted }) => {
   const [input, setInput] = useState([]);
   const userId = todos[0].userId;
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    onAdd(input);
+    setInput('');
+  };
 
   return (
     <div className='todos-user'>
       <img className='todos-user__avatar' src={avatars[userId]} alt='avatar' />
 
       <div className='todos-user__add'>
-        <input value={input} onChange={(e) => setInput(e.target.value)} />
-        <button>Add</button>
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              onSubmit(e);
+            }
+          }}
+        />
+        <button onClick={onSubmit}>Add</button>
       </div>
 
       <ul className='todos-user__list'>
         <strong>To do:</strong>
         {todos.map((todo, index) => (
-          <Todo key={index} todo={todo} />
+          <Todo key={index} todo={todo} onCompleted={onCompleted} />
         ))}
       </ul>
 
-      <button className='todos-user__clear'>Clear completed</button>
+      <button className='todos-user__clear' onClick={onClear}>
+        Clear completed
+      </button>
     </div>
   );
 };

@@ -1,11 +1,15 @@
-import './Todo.scss';
 import React from 'react';
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, onCompleted }) => {
   const { id, title, completed } = todo;
 
   return (
-    <div className={completed ? 'strike' : ''}>{`Task ${id}: ${title}`}</div>
+    <div
+      className={completed ? 'todos-user__list--strike' : ''}
+      onClick={() => onCompleted(id)}
+    >
+      {`Task ${id}: ${title}`}
+    </div>
   );
 };
 
